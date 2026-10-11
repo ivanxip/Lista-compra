@@ -1,0 +1,27 @@
+# LA COMPRA — App de lista compartida
+
+## Checklist rápido
+1. Crear proyecto en console.firebase.google.com (plan gratuito "Spark")
+2. Realtime Database → crear en modo bloqueado → pegar reglas → Publicar
+3. Authentication → activar "Anónimo"
+4. Project settings → copiar firebaseConfig → pegar en firebase-config.js
+5. Subir esta carpeta a app.netlify.com/drop
+6. En cada iPhone: abrir la URL en Safari → Compartir → Añadir a pantalla de inicio
+
+Las reglas recomendadas (solo vuestra lista "casa"):
+
+{
+  "rules": {
+    "listas": {
+      "casa": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+  }
+}
+
+## Varias listas
+Añade ?lista=otroNombre al final de la URL, por ejemplo:
+https://tu-app.netlify.app/?lista=verano
+Si restringiste las reglas a "casa", añade también ese nombre en las reglas.
